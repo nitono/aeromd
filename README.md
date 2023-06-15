@@ -1,7 +1,5 @@
 # @nitonodev/aeromd
 
-
-
 The lightweight markdown parser for `ts` or `js`
 
 ---
