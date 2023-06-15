@@ -1,7 +1,7 @@
 {
-	"name": "@nitono/aeromd",
+	"name": "@nitonodev/aeromd",
 	"description": "The lightweight markdown parser for js/ts",
-	"version": "0.0.0-beta-experemental",
+	"version": "0.0.0-beta-experimental-test-public",
 	"main": "lib/index.js",
 	"module": "lib/index.js",
 	"scripts": {
@@ -32,9 +32,6 @@
 		"nodemon": "^2.0.22",
 		"prettier": "^2.8.8",
 		"typescript": "^5.1.3"
-	},
-	"publishConfig": {
-		"registry": "https://npm.pkg.github.com"
 	},
 	"dependencies": {
 		"fs": "^0.0.1-security"
