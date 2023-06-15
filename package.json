@@ -7,8 +7,7 @@
 	"scripts": {
 		"format": "prettier --write .",
 		"start": "npm run format && nodemon src/index.ts",
-		"build": "npm run format && tsc --build",
-		"publish": "rmdir /s lib && npm run build && npm publish --access public"
+		"build": "npm run format && tsc --build"
 	},
 	"repository": {
 		"type": "git",
