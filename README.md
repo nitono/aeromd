@@ -1,6 +1,6 @@
 # @nitonodev/aeromd
 
-![cover](./assets/cover.png)
+
 
 The lightweight markdown parser for `ts` or `js`
 
