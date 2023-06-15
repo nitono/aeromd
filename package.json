@@ -1,0 +1,36 @@
+{
+	"name": "@nitono/aeromd",
+	"packageManager": "yarn@3.6.0",
+	"description": "The lightweight markdown parser for js/ts",
+	"version": "0.0.0-beta-experemental",
+	"main": "lib/index.js",
+	"scripts": {
+		"format": "prettier --write .",
+		"start": "npm run format && nodemon src/index.ts",
+		"build": "npm run format && tsc --build"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/nitono/aeromd.git"
+	},
+	"keywords": [
+		"markdown",
+		"parser",
+		"markdown-parser",
+		"markdown-js",
+		"markdown-ts",
+		"markdown-js-parser",
+		"markdown-ts-parser"
+	],
+	"author": "nitono <pyto015@ya.ru>",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/nitono/aeromd/issues"
+	},
+	"homepage": "https://github.com/nitono/aeromd#readme",
+	"devDependencies": {
+		"nodemon": "^2.0.22",
+		"prettier": "^2.8.8",
+		"typescript": "^5.1.3"
+	}
+}
