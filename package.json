@@ -1,13 +1,14 @@
 {
 	"name": "@nitonodev/aeromd",
 	"description": "The lightweight markdown parser for js/ts",
-	"version": "0.0.0-beta-experimental-test-public",
+	"version": "0.0.0-beta-experimental-public",
 	"main": "lib/index.js",
 	"module": "lib/index.js",
 	"scripts": {
 		"format": "prettier --write .",
 		"start": "npm run format && nodemon src/index.ts",
-		"build": "npm run format && tsc --build"
+		"build": "npm run format && tsc --build",
+		"publish": "rmdir /s lib && npm run build && npm publish --access public"
 	},
 	"repository": {
 		"type": "git",

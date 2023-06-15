@@ -126,4 +126,4 @@ You can write me to pyto015@ya.ru or open issue at [Github repo](https://github.
 Links
 
 -   Github: https://github.com/nitono/aeromd
--   npm: https://www.npmjs.com/settings/nitonodev/aeromd
+-   npm: https://www.npmjs.com/package/@nitonodev/aeromd
