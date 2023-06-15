@@ -1,5 +1,9 @@
-export const generateHTMLPageTemplate = ({parsedMarkdown}: {parsedMarkdown: string}):string => {
-    const HTMLPageTemplate = `
+export const generateHTMLPageTemplate = ({
+	parsedMarkdown
+}: {
+	parsedMarkdown: string;
+}): string => {
+	const HTMLPageTemplate = `
 		<!DOCTYPE html>
 <html>
   <head>
@@ -20,6 +24,5 @@ export const generateHTMLPageTemplate = ({parsedMarkdown}: {parsedMarkdown: stri
   </body>
 </html>`;
 
-return HTMLPageTemplate
-
-} 
+	return HTMLPageTemplate;
+};

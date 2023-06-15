@@ -64,7 +64,9 @@ export class MarkdownParser {
 	generateHTMLPage = () => {
 		this.generateStyles();
 		const parsedMarkdown = this.parse(this.markdown);
-		const HTMLPage = generateHTMLPageTemplate({parsedMarkdown: parsedMarkdown})
+		const HTMLPage = generateHTMLPageTemplate({
+			parsedMarkdown: parsedMarkdown
+		});
 		writeFileSync(cwd() + '\\md.html', HTMLPage);
 	};
 }

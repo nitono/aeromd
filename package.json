@@ -1,9 +1,9 @@
 {
 	"name": "@nitono/aeromd",
-	"packageManager": "yarn@3.6.0",
 	"description": "The lightweight markdown parser for js/ts",
 	"version": "0.0.0-beta-experemental",
 	"main": "lib/index.js",
+	"module": "lib/index.js",
 	"scripts": {
 		"format": "prettier --write .",
 		"start": "npm run format && nodemon src/index.ts",
@@ -32,6 +32,9 @@
 		"nodemon": "^2.0.22",
 		"prettier": "^2.8.8",
 		"typescript": "^5.1.3"
+	},
+	"publishConfig": {
+		"registry": "https://npm.pkg.github.com"
 	},
 	"dependencies": {
 		"fs": "^0.0.1-security"
