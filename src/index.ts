@@ -1,11 +1,6 @@
-import { writeFileSync } from 'fs';
 import { rules } from './rules/rules';
-import { cwd } from 'process';
-import { CSSTemplate } from './templates/css.template';
-import { generateHTMLPageTemplate } from './templates/html_page.template';
 export class MarkdownParser {
 	constructor(public markdown: string) {}
-
 	parse(m: string = this.markdown): string {
 		m = m.replace(/(\>+)\s*([^\n]+)/gim, (_match, arrows, content) => {
 			console.log(content, arrows.length);
@@ -36,37 +31,29 @@ export class MarkdownParser {
 		rules.forEach(([regexp, replaced]) => {
 			m = m.replace(regexp, replaced);
 		});
+
+		m = m.replace(
+			/(^\d+).\s*([^\n]+)+\n+/gm,
+			(matches, number, content) => {
+				return `<div><span>${number}</span>. ${content}</div>`
+			});
 		m = m.replace(/(\n\s+)+\-+\s+([^\n]+)/gim, (matches, tabs, content) => {
-			return `<ul><li style="margin-left:${
+			return `<li style="margin-left:${
 				tabs.length * 5
-			}px">${content}</li></ul>`;
+			}px">${content}</li>`;
 		});
 		m = m.replace(/(\n\s+)+\++\s+([^\n]+)/gim, (matches, tabs, content) => {
-			return `<ul><li style="margin-left:${
+			return `<li style="margin-left:${
 				tabs.length * 5
-			}px">${content}</li></ul>`;
+			}px">${content}</li>`;
 		});
 		m = m.replace(/(\n\s+)+\*+\s+([^\n]+)/gim, (matches, tabs, content) => {
-			return `<ul><li style="margin-left:${
+			return `<li style="margin-left:${
 				tabs.length * 5
-			}px">${content}</li></ul>`;
+			}px">${content}</li>`;
 		});
 
 		return m;
 	}
-	/**
-	 * This function generate a styles
-	 */
-	generateStyles = () => {
-		writeFileSync(cwd() + '\\md-theme.css', CSSTemplate);
-	};
-
-	generateHTMLPage = () => {
-		this.generateStyles();
-		const parsedMarkdown = this.parse(this.markdown);
-		const HTMLPage = generateHTMLPageTemplate({
-			parsedMarkdown: parsedMarkdown
-		});
-		writeFileSync(cwd() + '\\md.html', HTMLPage);
-	};
 }
+

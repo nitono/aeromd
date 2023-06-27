@@ -39,9 +39,9 @@ export const rules: Array<[RegExp, string]> = [
 	[/__([^_]+)__/g, '<b>$1</b>\n'],
 	[/\*\s?([^\n]+)\*/g, '<i>$1</i>\n'],
 	[/_([^\n]+)_/g, '<i>$1</i>\n'],
-	[/~~\s?([^_]+)~~/g, "<p style='text-decoration:line-through'>$1</p>"],
+	[/~~\s?([^_]+)~~/g, '<s>$1</s>'],
 
-	/**
+	/**s
 	 * This parse links
 	 */
 	[/\[([^\]]+)\]\(([^\"|\)]+)\"+([^\"]+)+\"\)/gm, '<a href="$2">$3</a>'],
@@ -53,8 +53,6 @@ export const rules: Array<[RegExp, string]> = [
 	[/^\+\s+([^\n]+)/gim, '<ul><li>$1</li></ul>'],
 	[/^\-\s+([^\n]+)/gim, '<ul><li>$1</li></ul>'],
 	[/^\*\s+([^\n]+)/gim, '<ul><li>$1</li></ul>'],
-	[/^\d+.\s+(.*)$/gm, '<ul><li>$1</li></ul>'],
-	[/^\d+.\s+(.*)$/gm, '<ul><li>$1</li></ul>'],
 
 	/**
 	 * This parse code blocks
