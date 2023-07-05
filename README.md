@@ -71,7 +71,6 @@ mp.parse('## Hello, World !'); // => <h2>Hello, World !</h2>
 
 <h1>For future</h1>
 
--   Adaptive library for react
 -   Write library for other programming languages
 
 ---

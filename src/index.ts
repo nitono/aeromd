@@ -35,8 +35,9 @@ export class MarkdownParser {
 		m = m.replace(
 			/(^\d+).\s*([^\n]+)+\n+/gm,
 			(matches, number, content) => {
-				return `<div><span>${number}</span>. ${content}</div>`
-			});
+				return `<div><span>${number}</span>. ${content}</div>`;
+			}
+		);
 		m = m.replace(/(\n\s+)+\-+\s+([^\n]+)/gim, (matches, tabs, content) => {
 			return `<li style="margin-left:${
 				tabs.length * 5
@@ -56,4 +57,3 @@ export class MarkdownParser {
 		return m;
 	}
 }
-
