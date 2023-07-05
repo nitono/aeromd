@@ -15,3 +15,6 @@
     src
     md-theme.css
     md.html
+    .prettierrc
+    tsconfig.json
+    node_modules

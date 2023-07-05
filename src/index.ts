@@ -25,7 +25,7 @@ export class MarkdownParser {
 					.slice(2)
 					.map(row => row.replace(/\s*\|\s*/g, '</td><td>') + '</td>')
 					.join('<tr></tr>')
-			}\n</tr>\n</tbody>\n</table><br/>`;
+			}\n</tr>\n</tbody>\n</table>`;
 		});
 
 		rules.forEach(([regexp, replaced]) => {
@@ -39,19 +39,19 @@ export class MarkdownParser {
 			}
 		);
 		m = m.replace(/(\n\s+)+\-+\s+([^\n]+)/gim, (matches, tabs, content) => {
-			return `<li style="margin-left:${
+			return `<ul><li style="margin-left:${
 				tabs.length * 5
-			}px">${content}</li>`;
+			}px">${content}</li></ul>`;
 		});
 		m = m.replace(/(\n\s+)+\++\s+([^\n]+)/gim, (matches, tabs, content) => {
-			return `<li style="margin-left:${
+			return `<ul><li style="margin-left:${
 				tabs.length * 5
-			}px">${content}</li>`;
+			}px">${content}</li></ul>`;
 		});
 		m = m.replace(/(\n\s+)+\*+\s+([^\n]+)/gim, (matches, tabs, content) => {
-			return `<li style="margin-left:${
+			return `<ul><li style="margin-left:${
 				tabs.length * 5
-			}px">${content}</li>`;
+			}px">${content}</li></ul>`;
 		});
 
 		return m;

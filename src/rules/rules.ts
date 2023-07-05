@@ -4,7 +4,7 @@ export const rules: Array<[RegExp, string]> = [
 	/**
 	 * This parse images
 	 */
-	[/!\[([^\]]+)]+\(([^\)]+)\)/gim, "<img src='$2' alt='$1'/><br/>"],
+	[/!\[([^\]]+)]+\(([^\)]+)\)/gim, "<img src='$2' alt='$1'/>"],
 	/** This parse headings */
 	[/^#{1}\s+([^\n]+)$/gm, '<h1>$1</h1>\n'],
 	[/^#{2}\s+([^\n]+)$/gm, '<h2>$1</h2>\n'],
@@ -59,15 +59,15 @@ export const rules: Array<[RegExp, string]> = [
 	 */
 	[
 		/```+\s+([\w]+)+\n([\s\S]+?)```/gim,
-		"<br/><pre class='code'><code>$2</code></pre><br/>"
+		"<pre class='code language-$1'><code>$2</code></pre>"
 	],
 	[
 		/```+([\w]+)+\n([\s\S]+?)```/gim,
-		"<br/><pre class='code'><code>$2</code></pre><br/>"
+		"<pre class='code language-$1'><code>$2</code></pre>"
 	],
 	[
 		/```+\n([\s\S]+?)```/gim,
-		"<br/><pre class='language-plaintext'><code >$1</code></pre><br/>"
+		"<pre class='language-plaintext'><code >$1</code></pre>"
 	],
 	/**
 	 * This parse a inline code
