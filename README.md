@@ -13,6 +13,7 @@ See changes at [CHANGELOG.md](./CHANGELOG.md)
     -   [Connecting](#connecting)
     -   [Quick start](#quick)
     -   [`parse` function](#parse-function)
+    -   [Use styles](#styles)
 -   [Feedback](#feedback)
 
 ---
@@ -68,6 +69,17 @@ mp.parse(); // => <h1>Hello</h1>
 // if you want to use custom parsing value
 mp.parse('## Hello, World !'); // => <h2>Hello, World !</h2>
 ```
+
+---
+
+<h3 id="styles">Use styles</h3>
+To use styles you may to write this lines
+
+```diff
++ import '@nitonodev/aeromd/lib/styles/md-theme.css'
+```
+
+---
 
 <h1>For future</h1>
 
