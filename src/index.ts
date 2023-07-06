@@ -1,4 +1,5 @@
 import { rules } from './rules/rules';
+
 export class MarkdownParser {
 	constructor(public markdown: string) {}
 	parse(m: string = this.markdown): string {
