@@ -1,7 +1,7 @@
 {
 	"name": "@nitonodev/aeromd",
 	"description": "The lightweight markdown parser for js/ts",
-	"version": "2.0.1",
+	"version": "2.1.0",
 	"main": "lib/index.js",
 	"module": "lib/index.js",
 	"scripts": {

@@ -1,13 +1,26 @@
 ## Versions
 
--   1.1.0 (latest)
+-   2.1.0 (latest)
+-   2.0.0
+-   1.1.0
 -   1.0.0
 -   0.0.0-release-public
 -   0.0.0-beta-experimental-public
 
 ## Changes
 
--   1.1.0(latest)
+-   2.1.0(latest)
+
+    -   Add div block which contains parsed markdown
+    -   See documentation at [README.md](https://www.npmjs.com/package/@nitonodev/aeromd/v/2.1.0)
+
+-   2.0.0
+
+    -   Add styles folder to build
+    -   Publishing [`aeromd`](https://www.npmjs.com/package/aeromd) package
+    -   See documentation at [README.md](https://www.npmjs.com/package/@nitonodev/aeromd/v/2.0.0)
+
+-   1.1.0
     -   Remove `<br/>` tag after `<pre>` and `img`
     -   Fix parsing lists(add missed `<ul></ul>` tag)
     -   Now available lib for react see [`@nitonodev/aeromd-react`](https://www.npmjs.com/package/@nitonodev/aeromd-react)
