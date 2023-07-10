@@ -15,5 +15,7 @@
     src
     md.html
     .prettierrc
+    postcss.config.js
+    .babelrc.json
     tsconfig.json
     node_modules

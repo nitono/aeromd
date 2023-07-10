@@ -1,4 +1,4 @@
-import { rules } from './rules/rules';
+import { rules } from './rules';
 
 export class MarkdownParser {
 	constructor(public markdown: string) {}

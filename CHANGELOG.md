@@ -1,6 +1,7 @@
 ## Versions
 
--   2.2.0 (latest)
+-   2.3.0 (latest)
+-   2.2.0
 -   2.1.1
 -   2.1.0
 -   2.0.0
@@ -11,7 +12,13 @@
 
 ## Changes
 
--   2.2.0 (latest)
+-   2.3.0 (latest)
+
+    -   Reducing the weight of the library
+    -   Switching to babel instead of tsc
+    -   See documentation at [README.md](https://www.npmjs.com/package/@nitonodev/aeromd/v/2.3.0)
+
+-   2.2.0
 
     -   Fix bug with css
     -   See documentation at [README.md](https://www.npmjs.com/package/@nitonodev/aeromd/v/2.2.0)
