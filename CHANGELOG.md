@@ -1,6 +1,7 @@
 ## Versions
 
--   2.3.1(latest)
+-   2.3.2 (latest)
+-   2.3.1
 -   2.3.0
 -   2.2.0
 -   2.1.1
@@ -13,7 +14,12 @@
 
 ## Changes
 
--   2.3.1 (latest)
+-   2.3.2 (latest)
+
+    -   Fix mistake at parsing headings
+    -   See documentation at [README.md](https://www.npmjs.com/package/@nitonodev/aeromd/v/2.3.2)
+
+-   2.3.1
 
     -   Start support [`gfm`](https://github.github.com/gfm/), specifically:
         -   At `4.1Thematic breaks ` from [`Example 13`](https://github.github.com/gfm/#example-13) to [`Example 18`](https://github.github.com/gfm/#example-18)

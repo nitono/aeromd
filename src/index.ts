@@ -48,7 +48,7 @@ export class MarkdownParser {
 			/^([ ]+)(#{1,6})\s([^\n]+)/gm,
 			(match, spaces: string, hashes: string, data: string) => {
 				if (spaces.length <= 3) {
-					return `<h${hashes.length}>${data}</h$>`;
+					return `<h${hashes.length}>${data}</h${hashes.length}>`;
 				} else {
 					return match;
 				}
