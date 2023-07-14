@@ -1,6 +1,7 @@
 ## Versions
 
--   2.3.0 (latest)
+-   2.3.1(latest)
+-   2.3.0
 -   2.2.0
 -   2.1.1
 -   2.1.0
@@ -12,7 +13,15 @@
 
 ## Changes
 
--   2.3.0 (latest)
+-   2.3.1 (latest)
+
+    -   Start support [`gfm`](https://github.github.com/gfm/), specifically:
+        -   At `4.1Thematic breaks ` from [`Example 13`](https://github.github.com/gfm/#example-13) to [`Example 18`](https://github.github.com/gfm/#example-18)
+        -   At `4.2 ATX headings` from [`Example 32`](https://github.github.com/gfm/#example-32) to [`Example 40`](https://github.github.com/gfm/#example-40)
+        -   At `4.5Fenced code blocks ` from [`Example 89`](https://github.github.com/gfm/#example-89) to [`Example 90`](https://github.github.com/gfm/#example-90)
+    -   See documentation at [README.md](https://www.npmjs.com/package/@nitonodev/aeromd/v/2.3.1)
+
+-   2.3.0
 
     -   Reducing the weight of the library
     -   Switching to babel instead of tsc

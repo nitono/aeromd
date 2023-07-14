@@ -1,23 +1,28 @@
 export const rules: Array<[RegExp, string]> = [
 	[/\<td><\/td\>/gm, ''],
 	[/\<th><\/th\>/gm, ''],
+	[
+		/~~~+\s+([\w]+)+\n([\s\S]+?)~~~/gim,
+		"<pre class='code language-$1'><code>$2</code></pre>"
+	],
+	[
+		/~~~+([\w]+)+\n([\s\S]+?)~~~/gim,
+		"<pre class='code language-$1'><code>$2</code></pre>"
+	],
+	[
+		/~~~+\n([\s\S]+?)~~~/gim,
+		"<pre class='language-plaintext'><code>$1</code></pre>"
+	],
 	/**
 	 * This parse images
 	 */
 	[/!\[([^\]]+)]+\(([^\)]+)\)/gim, "<img src='$2' alt='$1'/>"],
-	/** This parse headings */
-	[/^#{1}\s+([^\n]+)$/gm, '<h1>$1</h1>\n'],
-	[/^#{2}\s+([^\n]+)$/gm, '<h2>$1</h2>\n'],
-	[/^#{3}\s+([^\n]+)$/gm, '<h3>$1</h3>\n'],
-	[/^#{4}\s+([^\n]+)$/gm, '<h4>$1</h4>\n'],
-	[/^#{5}\s+([^\n]+)$/gm, '<h5>$1</h5>\n'],
-	[/^#{6}\s+([^\n]+)$/gm, '<h6>$1</h6>\n'],
 	/**
 	 * This parse horizontal rules
 	 */
-	[/^(\---)/gm, '	<hr>'],
+	[/^(---)/gm, '	<hr>'],
 	[/^(\*\*\*)/gm, '	<hr>'],
-	[/^(\___)/gm, '	<hr>'],
+	[/^(___)/gm, '	<hr>'],
 	/**
 	 * This parse typography symbols
 	 */
@@ -67,7 +72,7 @@ export const rules: Array<[RegExp, string]> = [
 	],
 	[
 		/```+\n([\s\S]+?)```/gim,
-		"<pre class='language-plaintext'><code >$1</code></pre>"
+		"<pre class='language-plaintext'><code>$1</code></pre>"
 	],
 	/**
 	 * This parse a inline code
@@ -76,7 +81,7 @@ export const rules: Array<[RegExp, string]> = [
 	/**
 	 * This parse marked text
 	 */
-	[/==+([^\==]+)+==/gim, '<mark>$1</mark>'],
+	[/==+([^\n]+)+==/gim, '<mark>$1</mark>'],
 	/**
 	 * This parse custom blocks
 	 */

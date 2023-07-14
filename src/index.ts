@@ -3,7 +3,7 @@ import { rules } from './rules';
 export class MarkdownParser {
 	constructor(public markdown: string) {}
 	parse(m: string = this.markdown): string {
-		m = m.replace(/(\>+)\s*([^\n]+)/gim, (_match, arrows, content) => {
+		m = m.replace(/^(\>+)\s*([^\n]+)/gim, (_match, arrows, content) => {
 			console.log(content, arrows.length);
 			const margin =
 				arrows.length !== 1 ? arrows.length * 10 + 'px' : 0 + 'px';
@@ -29,6 +29,31 @@ export class MarkdownParser {
 			}\n</tr>\n</tbody>\n</table>`;
 		});
 
+		m = m.replace(/^( +)(\*\*\*|---|___)/gm, (match, spaces: string) => {
+			if (spaces.length <= 3) {
+				return '<hr>';
+			} else {
+				return match;
+			}
+		});
+
+		m = m.replace(
+			/^(#{1,6})\s([^\n]+)/gm,
+			(_, hashes: string, data: string) => {
+				return `<h${hashes.length}>${data}</h$>`;
+			}
+		);
+
+		m = m.replace(
+			/^([ ]+)(#{1,6})\s([^\n]+)/gm,
+			(match, spaces: string, hashes: string, data: string) => {
+				if (spaces.length <= 3) {
+					return `<h${hashes.length}>${data}</h$>`;
+				} else {
+					return match;
+				}
+			}
+		);
 		rules.forEach(([regexp, replaced]) => {
 			m = m.replace(regexp, replaced);
 		});
@@ -55,6 +80,12 @@ export class MarkdownParser {
 			}px">${content}</li></ul>`;
 		});
 
-		return `<div id="html"><div id='body'>${m}</div></div>`;
+		m = m.replace(/^([ ]+)(<i>\*<\/i>)/gm, (match, spaces: string) => {
+			if (spaces.length > 3) {
+				return `${spaces}***`;
+			}
+		});
+
+		return `<div id="html">\n<div id='body'>\n${m}\n</div>\n</div>`;
 	}
 }

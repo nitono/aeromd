@@ -19,3 +19,4 @@
     .babelrc.json
     tsconfig.json
     node_modules
+    pnpm-lock.yaml

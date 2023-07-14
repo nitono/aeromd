@@ -1,7 +1,7 @@
 {
 	"name": "@nitonodev/aeromd",
 	"description": "The lightweight markdown parser for js/ts",
-	"version": "2.3.0",
+	"version": "2.3.1",
 	"main": "lib/index.js",
 	"module": "lib/index.js",
 	"scripts": {
@@ -40,6 +40,6 @@
 		"postcss": "^8.4.25",
 		"postcss-cli": "^10.1.0",
 		"prettier": "^2.8.8",
-		"typescript": "^5.1.3"
+		"typescript": "^5.1.6"
 	}
 }
