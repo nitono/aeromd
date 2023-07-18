@@ -3,7 +3,8 @@
 		"emitDeclarationOnly": true,
 		"isolatedModules": true,
 		"declaration": true,
-		"outDir": "./lib"
+		"outDir": "./lib",
+		"resolveJsonModule": true,
 	},
 	"include": ["./src/**/*"]
 }

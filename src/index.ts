@@ -40,7 +40,7 @@ export class MarkdownParser {
 		m = m.replace(
 			/^(#{1,6})\s([^\n]+)/gm,
 			(_, hashes: string, data: string) => {
-				return `<h${hashes.length}>${data}</h$>`;
+				return `<h${hashes.length}>${data}</h${hashes.length}>`;
 			}
 		);
 
@@ -59,33 +59,59 @@ export class MarkdownParser {
 		});
 
 		m = m.replace(
-			/(^\d+).\s*([^\n]+)+\n+/gm,
-			(matches, number, content) => {
-				return `<div><span>${number}</span>. ${content}</div>`;
+			/\[(.*?)]:(\s|)(.*?)(\s|)("|')(.*?)("|')/gm,
+			(
+				_match,
+				text: string,
+				_spaceBeforeURL: ' ' | '',
+				url: string,
+				_spaceAfterURL: ' ' | '',
+				_openQuote: '"' | "'",
+				title: string,
+				_closeQuote: '"' | "'"
+			) => {
+				return `<a href="${url}" tittle='${title}'>${text}</a>`;
 			}
 		);
-		m = m.replace(/(\n\s+)+\-+\s+([^\n]+)/gim, (matches, tabs, content) => {
-			return `<ul><li style="margin-left:${
-				tabs.length * 5
-			}px">${content}</li></ul>`;
-		});
-		m = m.replace(/(\n\s+)+\++\s+([^\n]+)/gim, (matches, tabs, content) => {
-			return `<ul><li style="margin-left:${
-				tabs.length * 5
-			}px">${content}</li></ul>`;
-		});
-		m = m.replace(/(\n\s+)+\*+\s+([^\n]+)/gim, (matches, tabs, content) => {
-			return `<ul><li style="margin-left:${
-				tabs.length * 5
-			}px">${content}</li></ul>`;
-		});
 
-		m = m.replace(/^([ ]+)(<i>\*<\/i>)/gm, (match, spaces: string) => {
-			if (spaces.length > 3) {
-				return `${spaces}***`;
+		m = m.replace(/\[(.*?)]:+(\s|)+(\/[^(\s|)]+)/gm, (_match: string, text: string, _spaceBeforeURL: ""| " ", url: string) => {
+			return `<a href="${url}">${text}</a>`
+		})
+
+		m = m.replace(
+			/^([\d]+).\s([^\n]+)/gm,
+			(_matches, number:string, content:string) => {
+				return `<ol start="${number}"><li>${content}</li></ol>`;
 			}
+		);
+		m = m.replace(/^([\s]+)([\d.\d]+)+(\)|)+\s([^\n]+)/gm, (_match: string, tabs: string, number: string,_:string, content: string): string => {
+			return `<ol style='margin-left:${tabs.length*10}px'>
+				<li style="list-style-type: '${number}';">${content}</li>
+			</ol>`
+		})
+		m = m.replace(/(\n\s+)+(\-|\+|\*)+\s+([^\n]+)/gim, (_matches:string, tabs:string,_listSymbol:string, content:string) => {
+			return `<ul><li style="margin-left:${
+				tabs.length * 5
+			}px">${content}</li></ul>`;
 		});
-
+				m = m.replace(/^([ ]+)(<i>\*<\/i>)/gm, (_match, spaces: string) => {
+							return `${spaces}***`;
+		
+				});
+		m = m.replace(/<(mailto:([^\>]+))>/gim, (match: string, href: string, email: string): string => {
+			
+			if (/\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+/gim.test(email)) {
+				return `<a href="${href}">${email}</a>`
+			}
+			
+			return '<p>'+match.replace(/\>/,"&gt;").replace(/\</, "&lt;")+'</p>'
+		})
+		m = m.replace(/\>\[(\s|x)\]/gmi, (_match, checked: string): string => {
+			let c: boolean = false
+			
+			if(checked === "X" || checked === 'x') c = true
+			return `><input type="checkbox" ${c ? "checked=''": ""} disabled=""/>`
+		})
 		return `<div id="html">\n<div id='body'>\n${m}\n</div>\n</div>`;
 	}
 }

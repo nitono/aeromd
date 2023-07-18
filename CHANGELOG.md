@@ -1,6 +1,7 @@
 ## Versions
 
--   2.3.2 (latest)
+-   3.0.0 (latest)
+-   2.3.2
 -   2.3.1
 -   2.3.0
 -   2.2.0
@@ -14,7 +15,12 @@
 
 ## Changes
 
--   2.3.2 (latest)
+-   3.0.0 (latest)
+
+    -   Add support most features of [gfm](https://github.github.com/gfm) and [commonmark](https://spec.commonmark.org/0.30/)
+    -   See documentation at [README.md](https://www.npmjs.com/package/@nitonodev/aeromd/v/3.0.0)
+
+-   2.3.2
 
     -   Fix mistake at parsing headings
     -   See documentation at [README.md](https://www.npmjs.com/package/@nitonodev/aeromd/v/2.3.2)

@@ -1,7 +1,7 @@
 {
 	"name": "@nitonodev/aeromd",
 	"description": "The lightweight markdown parser for js/ts",
-	"version": "2.3.2",
+	"version": "3.0.0",
 	"main": "lib/index.js",
 	"module": "lib/index.js",
 	"scripts": {
@@ -29,17 +29,18 @@
 	},
 	"homepage": "https://github.com/nitono/aeromd#readme",
 	"devDependencies": {
-		"@babel/cli": "^7.22.6",
-		"@babel/core": "^7.22.8",
-		"@babel/preset-env": "^7.22.7",
+		"@babel/cli": "^7.22.9",
+		"@babel/core": "^7.22.9",
+		"@babel/preset-env": "^7.22.9",
 		"@babel/preset-typescript": "^7.22.5",
 		"babel-minify": "^0.5.2",
 		"babel-preset-minify": "^0.5.2",
 		"cssnano": "^6.0.1",
 		"nodemon": "^2.0.22",
-		"postcss": "^8.4.25",
+		"postcss": "^8.4.26",
 		"postcss-cli": "^10.1.0",
 		"prettier": "^2.8.8",
 		"typescript": "^5.1.6"
 	}
 }
+
