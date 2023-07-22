@@ -1,19 +1,11 @@
 export const rules: Array<[RegExp, string]> = [
 	[/\<td><\/td\>/gm, ''],
 	[/\<th><\/th\>/gm, ''],
+
 	[
-		/~~~+\s+([\w]+)+\n([\s\S]+?)~~~/gim,
-		"<pre class='code language-$1'><code>$2</code></pre>"
+		/!\[([^\]]+|)\]\(([^!("|')(\s)]+)(\s("|')([^("|')]+)("|')|)\)/gim,
+		'<img src="$2" tittle="$5" alt="$1"/>'
 	],
-	[
-		/~~~+([\w]+)+\n([\s\S]+?)~~~/gim,
-		"<pre class='code language-$1'><code>$2</code></pre>"
-	],
-	[
-		/~~~+\n([\s\S]+?)~~~/gim,
-		"<pre class='language-plaintext'><code>$1</code></pre>"
-	],
-	[/!\[([^\]]+|)\]\(([^!("|')(\s)]+)(\s("|')([^("|')]+)("|')|)\)/gim, '<img src="$2" tittle="$5" alt="$1"/>'],
 
 	[/^(---)/gm, '	<hr>'],
 	[/^(\*\*\*)/gm, '	<hr>'],
@@ -43,23 +35,15 @@ export const rules: Array<[RegExp, string]> = [
 	[/^\-\s+([^\n]+)/gim, '<ul><li>$1</li></ul>'],
 	[/^\*\s+([^\n]+)/gim, '<ul><li>$1</li></ul>'],
 
-	[
-		/```+\s+([\w]+)+\n([\s\S]+?)```/gim,
-		"<pre class='code language-$1'><code>$2</code></pre>"
-	],
-	[
-		/```+([\w]+)+\n([\s\S]+?)```/gim,
-		"<pre class='code language-$1'><code>$2</code></pre>"
-	],
-	[
-		/```+\n([\s\S]+?)```/gim,
-		"<pre class='language-plaintext'><code>$1</code></pre>"
-	],
+	
 
 	[/(`)(.*?)\1/gim, "\n<pre class='inline-code'>$2</pre>\n"],
 
 	[/==+([^\n]+)+==/gim, '<mark>$1</mark>'],
-	[/<([a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*)>/gmi, "<p>$1</p>"],
+	[
+		/<([a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*)>/gim,
+		'<p>$1</p>'
+	],
 	[/<(https?[^>]+)>/gim, '<a href="$1">$1</a>'],
 	// [/<mailto:(\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+)>/gim, "<a href='$1'>$2</a>"],
 	[/\:::+([^\n]+)+\n+([^\:::]+)\:::/gim, "<div class='block $1'>$2</div>"]

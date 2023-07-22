@@ -93,36 +93,31 @@ ol li {
 	margin-top: 1em;
 	margin-bottom: 1em;
 }
-
-table thead th {
-	border-bottom: 2px solid #dedede;
-	border-radius: 4px;
-	background: #dedede;
-}
 table {
-	padding: 10px;
-	border: 2px solid #dedede;
-	border-radius: 10px;
+	border-collapse: collapse;
+	width: 100%;
 	text-align: center;
 }
 
-th:empty,
-tr:empty,
-td:empty {
-	display: none;
+th {
+	background-color: #f2f2f2;
+	border: 1px solid #ddd;
+	padding: 8px;
+	text-align: center;
 }
 
-table tbody td {
-	background: #a8a8a8;
-	padding: 2px;
-	border: none;
-	border-radius: 4px;
+td {
+	border: 1px solid #ddd;
+	padding: 8px;
 }
-tr td:nth-child(1) {
-	background: #a8a8a8;
-	padding: 2px;
-	border: none;
-	border-radius: 4px;
+
+tr:nth-child(even) {
+	background-color: #f2f2f2;
+}
+
+td:first-child {
+	font-weight: bold;
+	color: #333;
 }
 a {
 	color: #002b36;

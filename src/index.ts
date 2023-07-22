@@ -9,6 +9,10 @@ export class MarkdownParser {
 				arrows.length !== 1 ? arrows.length * 10 + 'px' : 0 + 'px';
 			return `<blockquote style="margin-left:${margin} !important">${content}</blockquote>`;
 		});
+		m = m.replace(/^(```|~~~)(\s|)(\w+)\n([\s\S]+?)(```|~~~)/gm, (_match: string, _startCodeSym: string, _space: string, languageName: string, code: string, _endCodeSym) => {
+			code = languageName !== 'mermaid' && code.replace(/\>/gm, "&gt;").replace(/\</gm, "&lt;")
+			return `<pre class="code language-${languageName}"><code>${code}</code></pre>`
+		})
 
 		m = m.replace(/\|.*\|.*\|\n((\|.*\|.*\|\n)*)/gm, table => {
 			return `<table>\n<thead>\n<tr>\n${
@@ -54,6 +58,8 @@ export class MarkdownParser {
 				}
 			}
 		);
+
+		m = m.replace(/^```(\s|)(mermaid)\n+(flowchart)\s(TB|TD|RL|LR|BT)\n(\s+|)([^```]+)```/gm, () => '')
 		rules.forEach(([regexp, replaced]) => {
 			m = m.replace(regexp, replaced);
 		});
@@ -74,44 +80,80 @@ export class MarkdownParser {
 			}
 		);
 
-		m = m.replace(/\[(.*?)]:+(\s|)+(\/[^(\s|)]+)/gm, (_match: string, text: string, _spaceBeforeURL: ""| " ", url: string) => {
-			return `<a href="${url}">${text}</a>`
-		})
+		m = m.replace(
+			/\[(.*?)]:+(\s|)+(\/[^(\s|)]+)/gm,
+			(
+				_match: string,
+				text: string,
+				_spaceBeforeURL: '' | ' ',
+				url: string
+			) => {
+				return `<a href="${url}">${text}</a>`;
+			}
+		);
 
 		m = m.replace(
 			/^([\d]+).\s([^\n]+)/gm,
-			(_matches, number:string, content:string) => {
+			(_matches, number: string, content: string) => {
 				return `<ol start="${number}"><li>${content}</li></ol>`;
 			}
 		);
-		m = m.replace(/^([\s]+)([\d.\d]+)+(\)|)+\s([^\n]+)/gm, (_match: string, tabs: string, number: string,_:string, content: string): string => {
-			return `<ol style='margin-left:${tabs.length*10}px'>
+		m = m.replace(
+			/^([\s]+)([\d.\d]+)+(\)|)+\s([^\n]+)/gm,
+			(
+				_match: string,
+				tabs: string,
+				number: string,
+				_: string,
+				content: string
+			): string => {
+				return `<ol style='margin-left:${tabs.length * 10}px'>
 				<li style="list-style-type: '${number}';">${content}</li>
-			</ol>`
-		})
-		m = m.replace(/(\n\s+)+(\-|\+|\*)+\s+([^\n]+)/gim, (_matches:string, tabs:string,_listSymbol:string, content:string) => {
-			return `<ul><li style="margin-left:${
-				tabs.length * 5
-			}px">${content}</li></ul>`;
-		});
-				m = m.replace(/^([ ]+)(<i>\*<\/i>)/gm, (_match, spaces: string) => {
-							return `${spaces}***`;
-		
-				});
-		m = m.replace(/<(mailto:([^\>]+))>/gim, (match: string, href: string, email: string): string => {
-			
-			if (/\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+/gim.test(email)) {
-				return `<a href="${href}">${email}</a>`
+			</ol>`;
 			}
-			
-			return '<p>'+match.replace(/\>/,"&gt;").replace(/\</, "&lt;")+'</p>'
-		})
-		m = m.replace(/\>\[(\s|x)\]/gmi, (_match, checked: string): string => {
-			let c: boolean = false
-			
-			if(checked === "X" || checked === 'x') c = true
-			return `><input type="checkbox" ${c ? "checked=''": ""} disabled=""/>`
-		})
+		);
+		m = m.replace(
+			/(\n\s+)+(\-|\+|\*)+\s+([^\n]+)/gim,
+			(
+				_matches: string,
+				tabs: string,
+				_listSymbol: string,
+				content: string
+			) => {
+				return `<ul><li style="margin-left:${
+					tabs.length * 5
+				}px">${content}</li></ul>`;
+			}
+		);
+		m = m.replace(/^([ ]+)(<i>\*<\/i>)/gm, (_match, spaces: string) => {
+			return `${spaces}***`;
+		});
+		m = m.replace(
+			/<(mailto:([^\>]+))>/gim,
+			(match: string, href: string, email: string): string => {
+				if (
+					/\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+/gim.test(email)
+				) {
+					return `<a href="${href}">${email}</a>`;
+				}
+
+				return (
+					'<p>' +
+					match.replace(/\>/, '&gt;').replace(/\</, '&lt;') +
+					'</p>'
+				);
+			}
+		);
+		m = m.replace(/\>\[(\s|x)\]/gim, (_match, checked: string): string => {
+			let c: boolean = false;
+
+			if (checked === 'X' || checked === 'x') c = true;
+			return `><input type="checkbox" ${
+				c ? "checked=''" : ''
+			} disabled=""/>`;
+		});
+		
 		return `<div id="html">\n<div id='body'>\n${m}\n</div>\n</div>`;
 	}
 }
+

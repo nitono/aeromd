@@ -1,6 +1,7 @@
 ## Versions
 
--   3.0.0 (latest)
+-   3.1.0(latest)
+-   3.0.0
 -   2.3.2
 -   2.3.1
 -   2.3.0
@@ -15,7 +16,12 @@
 
 ## Changes
 
--   3.0.0 (latest)
+-   3.1.0(latest)
+
+    -   Rewrite code blocks parsing
+    -   See documentation at [README.md](https://www.npmjs.com/package/@nitonodev/aeromd/v/3.1.0)
+
+-   3.0.0
 
     -   Add support most features of [gfm](https://github.github.com/gfm) and [commonmark](https://spec.commonmark.org/0.30/)
     -   See documentation at [README.md](https://www.npmjs.com/package/@nitonodev/aeromd/v/3.0.0)
